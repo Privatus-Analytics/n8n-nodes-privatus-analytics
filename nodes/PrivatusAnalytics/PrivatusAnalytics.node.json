@@ -6,12 +6,12 @@
 	"resources": {
 		"credentialDocumentation": [
 			{
-				"url": "https://github.com/privatus-analytics/n8n-nodes-privatus-analytics#credentials"
+				"url": "https://github.com/Privatus-Analytics/n8n-nodes-privatus-analytics#credentials"
 			}
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://github.com/privatus-analytics/n8n-nodes-privatus-analytics#readme"
+				"url": "https://github.com/Privatus-Analytics/n8n-nodes-privatus-analytics#readme"
 			}
 		]
 	},

@@ -16,7 +16,7 @@ export class PrivatusAnalyticsApi implements ICredentialType {
 		dark: 'file:privatusAnalytics.dark.svg',
 	};
 
-	documentationUrl = 'https://github.com/privatus-analytics/n8n-nodes-privatus-analytics#credentials';
+	documentationUrl = 'https://github.com/Privatus-Analytics/n8n-nodes-privatus-analytics#credentials';
 
 	properties: INodeProperties[] = [
 		{

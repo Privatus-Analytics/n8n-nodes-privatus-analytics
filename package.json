@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-privatus-analytics",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "n8n community nodes for Privatus Analytics, the cookieless web analytics service: a regular node for stats, goals, uptime, experiments and testimonials, and a trigger node for 25 signed webhook events.",
   "license": "MIT",
   "homepage": "https://privatusanalytics.com",
@@ -18,10 +18,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/privatus-analytics/n8n-nodes-privatus-analytics.git"
+    "url": "git+https://github.com/Privatus-Analytics/n8n-nodes-privatus-analytics.git"
   },
   "bugs": {
-    "url": "https://github.com/privatus-analytics/n8n-nodes-privatus-analytics/issues"
+    "url": "https://github.com/Privatus-Analytics/n8n-nodes-privatus-analytics/issues"
   },
   "engines": {
     "node": ">=20.15"
