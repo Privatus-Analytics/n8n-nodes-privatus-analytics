@@ -1,0 +1,28 @@
+{
+	"node": "n8n-nodes-privatus-analytics.privatusAnalyticsTrigger",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": ["Analytics"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://github.com/privatus-analytics/n8n-nodes-privatus-analytics#credentials"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://github.com/privatus-analytics/n8n-nodes-privatus-analytics#trigger"
+			}
+		]
+	},
+	"alias": [
+		"analytics",
+		"webhook",
+		"alert",
+		"uptime",
+		"goal",
+		"testimonial",
+		"export",
+		"site audit"
+	]
+}

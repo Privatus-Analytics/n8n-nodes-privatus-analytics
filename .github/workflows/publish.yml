@@ -1,0 +1,71 @@
+# Publishes this n8n community node package to npm on every version tag push,
+# with an npm provenance statement. n8n requires verified community nodes to be
+# published from GitHub Actions with provenance, never from a laptop.
+#
+# One time setup, choose one:
+#
+#   Option A, npm Trusted Publishing (no long-lived secret):
+#     1. Publish version 0.1.0 once (see SUBMISSION.md), or create the package on npmjs.com.
+#     2. Package settings, Trusted Publisher, GitHub Actions:
+#          Repository owner: privatusanalytics
+#          Repository name:  n8n-nodes-privatus-analytics
+#          Workflow name:    publish.yml
+#     3. Leave the NPM_TOKEN secret unset.
+#
+#   Option B, npm automation token:
+#     1. npmjs.com, Access Tokens, Generate New Token, Granular Access Token,
+#        scoped to this package with read and write permission.
+#     2. GitHub, Settings, Secrets and variables, Actions, New repository secret
+#        named NPM_TOKEN.
+#
+# Release: set the version in package.json and CHANGELOG.md, commit, then push a
+# tag that matches it (git tag 0.1.0 && git push origin 0.1.0).
+
+name: Publish
+
+on:
+  push:
+    tags:
+      - '*.*.*'
+
+jobs:
+  publish:
+    name: Publish to npm
+    runs-on: ubuntu-latest
+
+    permissions:
+      # Mints the OIDC token for the provenance statement (and Trusted Publishing).
+      id-token: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      # Trusted Publishing needs npm 11.5.1 or newer.
+      - name: Use a current npm
+        run: npm install -g npm@11.8.0
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check that the tag matches package.json
+        run: |
+          [ "$GITHUB_REF_NAME" = "$(node -p "require('./package.json').version")" ] || { echo "Tag $GITHUB_REF_NAME does not match the version in package.json"; exit 1; }
+
+      - name: Test
+        run: npm test
+
+      - name: Release
+        # n8n-node release lints, builds and runs `npm publish` with
+        # NPM_CONFIG_PROVENANCE=true when it runs in GitHub Actions.
+        run: |
+          [ -n "$NPM_TOKEN" ] && npm config set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
+          npm run release
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

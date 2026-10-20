@@ -1,0 +1,65 @@
+{
+  "name": "n8n-nodes-privatus-analytics",
+  "version": "0.1.0",
+  "description": "n8n community nodes for Privatus Analytics, the cookieless web analytics service: a regular node for stats, goals, uptime, experiments and testimonials, and a trigger node for 25 signed webhook events.",
+  "license": "MIT",
+  "homepage": "https://privatusanalytics.com",
+  "keywords": [
+    "n8n-community-node-package",
+    "privatus analytics",
+    "analytics",
+    "web analytics",
+    "cookieless",
+    "privacy"
+  ],
+  "author": {
+    "name": "Privatus Analytics",
+    "email": "james@privatusanalytics.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/privatus-analytics/n8n-nodes-privatus-analytics.git"
+  },
+  "bugs": {
+    "url": "https://github.com/privatus-analytics/n8n-nodes-privatus-analytics/issues"
+  },
+  "engines": {
+    "node": ">=20.15"
+  },
+  "scripts": {
+    "build": "n8n-node build",
+    "build:watch": "tsc --watch",
+    "dev": "n8n-node dev",
+    "lint": "n8n-node lint",
+    "lint:fix": "n8n-node lint --fix",
+    "release": "n8n-node release",
+    "sync-spec": "node scripts/sync-spec.mjs",
+    "test": "n8n-node build && node --test \"test/*.test.js\"",
+    "prepublishOnly": "n8n-node prerelease"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "strict": true,
+    "credentials": [
+      "dist/credentials/PrivatusAnalyticsApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/PrivatusAnalytics/PrivatusAnalytics.node.js",
+      "dist/nodes/PrivatusAnalyticsTrigger/PrivatusAnalyticsTrigger.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@n8n/node-cli": "0.51.3",
+    "eslint": "9.29.0",
+    "n8n-workflow": "2.42.2",
+    "prettier": "3.6.2",
+    "release-it": "21.1.0",
+    "typescript": "5.9.2"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}
