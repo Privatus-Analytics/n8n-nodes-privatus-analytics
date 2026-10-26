@@ -1,6 +1,26 @@
 # n8n-nodes-privatus-analytics
 
-n8n community nodes for [Privatus Analytics](https://privatusanalytics.com), the cookieless web analytics service. They use only the public [Privatus Analytics API](https://privatusanalytics.com/docs/api) and its signed [webhooks](https://privatusanalytics.com/docs/api/webhooks), have no runtime dependencies, and never send your data anywhere except to `https://privatusanalytics.com`.
+**Simple, private website analytics, at work in your n8n workflows.** No cookies, honest numbers, and a dashboard you understand in seconds.
+
+## Why Privatus Analytics
+
+**Google Analytics is slow, confusing and hungry for data.** It sends what your visitors do to Google. In many countries it means showing a cookie pop-up (the box that asks visitors to accept cookies), and many people click "reject", so you never see them. Bots pad the numbers that are left.
+
+**Privatus Analytics fixes that.** It counts visits to your website without cookies and never stores IP addresses. Bots are filtered out before they are counted. Your data is never sold or shared.
+
+What you get:
+
+- **A dashboard you understand in seconds.** Visitors, top pages and where people came from, all on one screen.
+- **No cookie pop-up needed for our analytics.** We set no cookies and store no personal data. Laws differ by country, so check your own legal advice.
+- **Honest numbers.** Known bots and fake traffic are left out on every plan.
+- **Your numbers where you work.** Send stats to Slack, Sheets or any app n8n connects to, and start a workflow when an alert fires or a testimonial comes in. No code needed.
+- **Data you own.** We never sell it or show you ads, and you can pull it out any time through the API.
+
+**Start free.** The Free plan has 10,000 events a month and 3 sites, with no card. Every new account also gets 14 days of Pro free, with no card. [Create your account](https://privatusanalytics.com).
+
+## What this package does
+
+Two n8n community nodes for Privatus Analytics. They use only the public [Privatus Analytics API](https://privatusanalytics.com/docs/api) and its signed [webhooks](https://privatusanalytics.com/docs/api/webhooks), have no runtime dependencies, and never send your data anywhere except to `https://privatusanalytics.com`. They do not add a tracking script. Your site still needs the Privatus Analytics script to collect visits.
 
 - **Privatus Analytics** node: read stats, manage goals, chart notes, campaigns, uptime checks, alerts, status pages, exports, members, site audits, experiments and testimonials (16 resources, 51 operations).
 - **Privatus Analytics Trigger** node: start a workflow on any of 25 events, such as an alert firing, an uptime check going down, a new testimonial or a finished export. Every delivery is verified with its signature.
@@ -77,9 +97,9 @@ Choose one or more events. When the workflow is activated the node creates one w
 
 Events: Alert Resolved, Alert Triggered, Analytics Import Completed, Analytics Import Failed, Experiment Ended, Export Ready, Goal Alert Triggered, New Member, New Reviews Found by Sync, New Site, New Testimonial, Site Audit Completed, Site Deleted, Testimonial Approved, Testimonial Deleted, Testimonial Form Submitted, Testimonial Import Finished, Testimonial Moved to Trash, Testimonial Rejected, Testimonial Request Finished, Testimonial Request Sent, Testimonial Restored, Uptime Check Down, Uptime Check Recovered and Usage Threshold Reached.
 
-**Filters** (all optional): Site, Alert Rule, Form, Request and Minimum Rating. A filter applies to the events that carry that field, and the other events pass. A delivery that does not match is acknowledged and starts nothing.
+**Filters** (all optional): Site, Alert Rule, Form, Request and Minimum Rating. A filter applies to the events that have that field, and the other events pass. A delivery that does not match is acknowledged and starts nothing.
 
-**Security.** Every delivery carries a `Privatus-Signature: t=<unix time>,v1=<hex>` header, where `v1` is the HMAC-SHA256 of `<t>.<raw body>` keyed with the signing secret. The node answers `401` and starts nothing when the signature is missing, wrong, or more than five minutes old. n8n must give the node the raw request body for this check, which it does for JSON deliveries.
+**Security.** Every delivery has a `Privatus-Signature: t=<unix time>,v1=<hex>` header, where `v1` is the HMAC-SHA256 of `<t>.<raw body>` keyed with the signing secret. The node responds with `401` and starts nothing when the signature is missing, wrong, or more than five minutes old. n8n must give the node the raw request body for this check, which it does for JSON deliveries.
 
 **Output.** One item for each delivery: the data of the event plus `id` (the delivery ID), `event`, `occurred_at` and `workspace_id`. An `id` inside the data moves to `record_id`, or `export_id` for Export Ready. The payloads are documented at [privatusanalytics.com/docs/api/webhooks](https://privatusanalytics.com/docs/api/webhooks).
 
