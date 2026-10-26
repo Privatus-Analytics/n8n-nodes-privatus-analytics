@@ -1,22 +1,21 @@
 # n8n-nodes-privatus-analytics
 
-**Simple, private website analytics, at work in your n8n workflows.** No cookies, honest numbers, and a dashboard you understand in seconds.
+**Put your website stats and alerts to work in your n8n workflows.**
 
-## Why Privatus Analytics
+You want your website numbers to reach the tools your team uses, like a post in
+your team chat each morning or a ticket when your site goes down. Doing it by
+hand takes time every day.
 
-**Google Analytics is slow, confusing and hungry for data.** It sends what your visitors do to Google. In many countries it means showing a cookie pop-up (the box that asks visitors to accept cookies), and many people click "reject", so you never see them. Bots pad the numbers that are left.
+These two n8n nodes connect your workflows to Privatus Analytics. One reads
+stats and manages goals, alerts, uptime checks and more. The other starts a
+workflow when something happens, like an alert, a site going down or a new
+testimonial.
 
-**Privatus Analytics fixes that.** It counts visits to your website without cookies and never stores IP addresses. Bots are filtered out before they are counted. Your data is never sold or shared.
+So reports and alerts go where your team already works, with no copy and paste.
+The numbers are honest too. Privatus Analytics counts visits without cookies, so
+there is no cookie pop-up for your analytics, and it leaves bots out.
 
-What you get:
-
-- **A dashboard you understand in seconds.** Visitors, top pages and where people came from, all on one screen.
-- **No cookie pop-up needed for our analytics.** We set no cookies and store no personal data. Laws differ by country, so check your own legal advice.
-- **Honest numbers.** Known bots and fake traffic are left out on every plan.
-- **Your numbers where you work.** Send stats to Slack, Sheets or any app n8n connects to, and start a workflow when an alert fires or a testimonial comes in. No code needed.
-- **Data you own.** We never sell it or show you ads, and you can pull it out any time through the API.
-
-**Start free.** The Free plan has 10,000 events a month and 3 sites, with no card. Every new account also gets 14 days of Pro free, with no card. [Create your account](https://privatusanalytics.com).
+**Free plan, no card:** 10,000 events a month (an event is a page view or an action you track) on up to 3 sites. [Start free at privatusanalytics.com](https://privatusanalytics.com).
 
 ## What this package does
 
