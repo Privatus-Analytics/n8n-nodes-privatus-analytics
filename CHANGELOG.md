@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.1.3 (2026-10-26)
+
+- README: a new intro that starts with the problem Privatus Analytics solves.
 
 ## 0.1.2 (2026-10-20)
 
